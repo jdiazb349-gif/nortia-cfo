@@ -1,0 +1,661 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>html,body{margin:0}*{box-sizing:border-box}img{max-width:100%}[hidden]{display:none!important}body{font-family:"Source Sans 3",system-ui,sans-serif}</style>
+<title>Nortia CFO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: consultora financiera institucional â€” fondo claro, bandas marino,
+     titulares serif, columna de contenido contenida y trust-forward. */
+  :root{
+    --bg:#f6f8fb;
+    --surface:#ffffff;
+    --navy:#0e2a47;        /* marino profundo: bandas oscuras y titulares */
+    --navy-2:#0a2037;
+    --ink:#132a44;         /* texto principal */
+    --muted:#5b6b7d;       /* texto secundario */
+    --line:#e3e9f1;        /* lÃ­neas */
+    --line-2:#1d3c5c;      /* lÃ­neas sobre marino */
+    --accent:#1c5fa8;      /* azul corporativo */
+    --accent-soft:#eaf1fa; /* relleno azul tenue */
+    --gold:#9c7a33;        /* dorado sobrio (detalle premium) */
+    --good:#1f7a52;
+    --on-navy:#eef4fb;     /* texto sobre marino */
+    --muted-navy:#9db4cd;  /* secundario sobre marino */
+    --radius:10px;
+    --maxw:1140px;
+    --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0a1b2e; --surface:#0f2946; --navy:#081626; --navy-2:#060f1c;
+      --ink:#e9f0f8; --muted:#9fb2c7; --line:#1e3a57; --line-2:#234566;
+      --accent:#4e92d6; --accent-soft:#12335a; --gold:#caa24a; --good:#4cae82;
+      --on-navy:#e9f0f8; --muted-navy:#9fb2c7; color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0a1b2e; --surface:#0f2946; --navy:#081626; --navy-2:#060f1c;
+    --ink:#e9f0f8; --muted:#9fb2c7; --line:#1e3a57; --line-2:#234566;
+    --accent:#4e92d6; --accent-soft:#12335a; --gold:#caa24a; --good:#4cae82;
+    --on-navy:#e9f0f8; --muted-navy:#9fb2c7; color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg); color:var(--ink); font-family:var(--sans); line-height:1.6; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw); margin-inline:auto;
+    padding-left:max(22px, env(safe-area-inset-left,0px));
+    padding-right:max(22px, env(safe-area-inset-right,0px));}
+  section{padding-block:clamp(60px,8vw,110px)}
+  h1,h2,h3{font-family:var(--serif); line-height:1.12; margin:0; font-weight:600; text-wrap:balance; letter-spacing:-.01em}
+  h1{font-weight:700}
+  h2{font-size:clamp(1.9rem,4vw,2.75rem)}
+  p{margin:0}
+  a{color:inherit}
+  .tnum{font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--sans); font-size:.76rem; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
+  .muted{color:var(--muted)}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+  .rule{width:46px; height:3px; background:var(--gold); border:none; margin:0 0 20px}
+
+  /* nav */
+  body::before{content:""; position:fixed; inset:0 0 auto; height:env(safe-area-inset-top,0px); z-index:30; background:var(--navy)}
+  header.nav{position:sticky; top:env(safe-area-inset-top,0px); z-index:20; background:var(--navy); border-bottom:1px solid var(--line-2)}
+  .nav .wrap{display:flex; align-items:center; gap:18px; padding-block:14px}
+  .brand{display:flex; align-items:center; gap:11px; font-family:var(--serif); font-weight:700; font-size:1.2rem; color:var(--on-navy)}
+  .brand .sub{font-family:var(--sans); font-weight:600; font-size:.7rem; letter-spacing:.2em; color:var(--muted-navy); align-self:flex-end; padding-bottom:3px}
+  .mark{width:30px; height:30px; flex:0 0 auto}
+  .nav nav{display:flex; gap:24px; margin-left:auto; font-size:.92rem}
+  .nav nav a{text-decoration:none; color:var(--muted-navy); font-weight:500}
+  .nav nav a:hover{color:var(--on-navy)}
+  .nav-cta{display:inline-flex; align-items:center; font-weight:600; font-size:.9rem; padding:10px 18px; border-radius:6px; background:var(--accent); color:#fff; text-decoration:none; white-space:nowrap}
+  .theme-btn{background:transparent; color:var(--muted-navy); border:1px solid var(--line-2); border-radius:6px; width:38px; height:38px; cursor:pointer; font-size:1rem; flex:0 0 auto}
+  @media(max-width:880px){ .nav nav{display:none} }
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:9px; font-family:var(--sans); font-weight:600; font-size:1rem; padding:14px 26px; border-radius:6px; cursor:pointer; text-decoration:none; border:1px solid transparent}
+  .btn-primary{background:var(--accent); color:#fff}
+  .btn-primary:hover{background:color-mix(in srgb,var(--accent) 86%, #000)}
+  .btn-ghost{background:transparent; color:var(--accent); border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+  .btn-ghost:hover{background:var(--accent-soft)}
+  .btn-light{background:#fff; color:var(--navy)} .btn-light:hover{background:#eef2f8}
+
+  /* hero */
+  .hero{background:
+      linear-gradient(180deg, color-mix(in srgb,var(--navy) 80%, transparent), color-mix(in srgb,var(--navy) 92%, transparent)),
+      url('skyline.jpg') center 20%/cover no-repeat,
+      var(--navy);
+    color:var(--on-navy); position:relative; overflow:hidden; border-bottom:1px solid var(--line-2)}
+  /* aurora animada */
+  .aurora{position:absolute; inset:-25% -12% -25% -12%; z-index:0; pointer-events:none; overflow:hidden; filter:blur(66px); opacity:.5}
+  .aurora span{position:absolute; display:block; border-radius:50%; mix-blend-mode:screen; will-change:transform}
+  .aurora .b1{width:48vw; height:48vw; left:-6%; top:-16%; background:radial-gradient(circle, color-mix(in srgb,var(--accent) 90%, transparent), transparent 62%); animation:drift1 23s ease-in-out infinite}
+  .aurora .b2{width:40vw; height:40vw; right:-4%; top:-26%; background:radial-gradient(circle, color-mix(in srgb,var(--gold) 78%, transparent), transparent 60%); animation:drift2 29s ease-in-out infinite}
+  .aurora .b3{width:46vw; height:46vw; left:34%; top:24%; background:radial-gradient(circle, color-mix(in srgb,#2f80d6 85%, transparent), transparent 60%); animation:drift3 26s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9%,11%) scale(1.16)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-11%,9%) scale(1.12)}}
+  @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7%,-9%) scale(1.22)}}
+  .hero::after{content:""; position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.14;
+    background:linear-gradient(transparent 0 97%, var(--on-navy) 97%) 0 0/100% 40px,
+      linear-gradient(90deg, transparent 0 97%, var(--on-navy) 97%) 0 0/40px 100%;
+    mask-image:radial-gradient(70% 70% at 50% 0%, #000, transparent 75%)}
+  .hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(30px,5vw,64px); align-items:center; padding-block:clamp(56px,8vw,100px)}
+  .hero h1{font-size:clamp(2.4rem,5.4vw,3.9rem); color:#fff}
+  .hero .lede{margin-top:22px; font-size:clamp(1.08rem,1.5vw,1.26rem); color:var(--muted-navy); max-width:40ch}
+  .hero .cta{margin-top:32px; display:flex; gap:14px; flex-wrap:wrap}
+  .hero .assure{margin-top:26px; display:flex; gap:22px; flex-wrap:wrap; font-size:.86rem; color:var(--muted-navy)}
+  .hero .assure b{color:#fff; font-weight:600}
+  .hero .assure span{display:flex; align-items:center; gap:8px}
+  .check{color:var(--good); flex:0 0 auto}
+  @media(max-width:880px){ .hero .wrap{grid-template-columns:1fr} }
+
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+  /* panel interactivo (demo) */
+  .demo{background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 34px 64px -40px rgba(4,20,40,.75); animation:float 8s ease-in-out infinite}
+  .demo-top{display:flex; align-items:center; gap:10px; padding:13px 16px; border-bottom:1px solid var(--line); background:var(--bg)}
+  .demo-dots{display:flex; gap:6px} .demo-dots i{width:9px; height:9px; border-radius:50%; background:var(--line); display:block}
+  .demo-ttl{font-size:.8rem; font-weight:700; color:var(--muted)}
+  .demo-live{margin-left:auto; font-size:.72rem; color:var(--good); font-weight:600; display:flex; align-items:center; gap:7px}
+  .dotlive{width:7px; height:7px; border-radius:50%; background:var(--good); animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}70%{box-shadow:0 0 0 6px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .demo-tabs{display:flex; gap:2px; padding:12px 12px 0}
+  .dt{flex:1; font-family:var(--sans); font-size:.8rem; font-weight:600; padding:10px 6px; border:none; background:transparent; color:var(--muted); cursor:pointer; border-radius:7px 7px 0 0; border-bottom:2px solid transparent}
+  .dt:hover{color:var(--ink)}
+  .dt.active{color:var(--accent); border-bottom-color:var(--accent); background:var(--accent-soft)}
+  .demo-body{padding:18px 18px 4px}
+  .demo-chart{width:100%; height:auto; display:block}
+  .draw{stroke-dasharray:640; animation:draw 1.3s ease forwards}
+  @keyframes draw{from{stroke-dashoffset:640}to{stroke-dashoffset:0}}
+  .grow{transform-box:fill-box; transform-origin:bottom; animation:grow .8s cubic-bezier(.2,.7,.3,1) forwards}
+  .grow:nth-of-type(2){animation-delay:.07s} .grow:nth-of-type(3){animation-delay:.14s}
+  .grow:nth-of-type(4){animation-delay:.21s} .grow:nth-of-type(5){animation-delay:.28s}
+  @keyframes grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+  .dkpis{display:flex; gap:10px; margin-top:14px}
+  .dkpis.grid4{flex-wrap:wrap} .dkpis.grid4 .dkpi{flex:1 1 44%}
+  .dkpi{flex:1; background:var(--bg); border:1px solid var(--line); border-radius:9px; padding:12px 13px}
+  .dkpi .l{font-size:.64rem; letter-spacing:.09em; text-transform:uppercase; color:var(--muted); font-weight:700}
+  .dkpi .v{font-family:var(--serif); font-weight:600; font-size:1.3rem; margin-top:3px}
+  .dkpi .v small{font-family:var(--sans); font-size:.72rem; font-weight:600; margin-left:5px; color:var(--good)}
+  .card-note{margin:14px 0 0; font-size:.74rem; color:var(--muted)}
+
+  /* trust strip */
+  .trust{background:var(--surface); border-bottom:1px solid var(--line)}
+  .trust .wrap{display:flex; align-items:center; justify-content:center; gap:16px 40px; flex-wrap:wrap; padding-block:22px}
+  .trust .lbl{font-size:.82rem; color:var(--muted); font-weight:500}
+  .trust b{color:var(--ink); font-weight:600; font-size:.95rem}
+
+  .sec-head{max-width:64ch}
+  .sec-head h2{margin-top:6px}
+  .sec-head .lead{margin-top:16px; color:var(--muted); font-size:1.08rem}
+  .center{margin-inline:auto; text-align:center}
+
+  /* value / problem */
+  .cols3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:46px}
+  @media(max-width:880px){ .cols3{grid-template-columns:1fr} }
+  .vcard{padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface)}
+  .vcard .ico{width:40px; height:40px; border-radius:8px; background:var(--accent-soft); color:var(--accent); display:grid; place-items:center; margin-bottom:16px}
+  .vcard h3{font-size:1.22rem}
+  .vcard p{margin-top:10px; color:var(--muted); font-size:.96rem}
+
+  /* services */
+  .services{background:var(--surface); border-block:1px solid var(--line)}
+  .bento{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px}
+  .svc{padding:26px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); display:flex; flex-direction:column;
+    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease}
+  .svc:hover{transform:translateY(-4px); border-color:color-mix(in srgb,var(--accent) 45%,var(--line)); box-shadow:0 22px 44px -32px rgba(4,20,40,.5)}
+  .svc .idx{font-family:var(--serif); font-size:1rem; color:var(--gold); font-weight:600}
+  .svc h3{font-size:1.18rem; margin-top:8px}
+  .svc p{margin-top:9px; color:var(--muted); font-size:.95rem}
+  .svc.big{grid-column:span 2; grid-row:span 2; background:var(--navy); color:var(--on-navy); border-color:var(--line-2); justify-content:space-between; position:relative; overflow:hidden}
+  .svc.big h3{font-size:clamp(1.5rem,2.6vw,2rem); color:#fff; margin-top:14px}
+  .svc.big p{color:var(--muted-navy); font-size:1.04rem}
+  .svc.big .idx{color:var(--gold)}
+  .svc.wide{grid-column:span 2}
+  .feat-badge{display:inline-flex; align-self:flex-start; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:5px 11px; border-radius:999px}
+  .big-foot{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap}
+  .big-foot .pill{font-size:.8rem; color:var(--on-navy); border:1px solid var(--line-2); border-radius:999px; padding:7px 13px}
+  @media(max-width:880px){ .bento{grid-template-columns:repeat(2,1fr)} .svc.big{grid-row:auto} }
+  @media(max-width:560px){ .bento{grid-template-columns:1fr} .svc.big,.svc.wide{grid-column:span 1} }
+
+  /* process */
+  .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:28px; margin-top:52px}
+  @media(max-width:880px){ .steps{grid-template-columns:1fr 1fr} }
+  @media(max-width:480px){ .steps{grid-template-columns:1fr} }
+  .step .n{width:42px; height:42px; border-radius:50%; border:1.5px solid var(--accent); color:var(--accent); display:grid; place-items:center; font-family:var(--serif); font-weight:600; font-size:1.05rem}
+  .step h3{font-size:1.14rem; margin-top:16px}
+  .step p{margin-top:8px; color:var(--muted); font-size:.93rem}
+
+  /* differentiator */
+  .diff{background:var(--navy); color:var(--on-navy); border-block:1px solid var(--line-2)}
+  .diff .split{display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,60px); align-items:center}
+  @media(max-width:880px){ .diff .split{grid-template-columns:1fr} }
+  .diff h2{color:#fff}
+  .diff .lead{color:var(--muted-navy); margin-top:16px; font-size:1.08rem}
+  .matrix{border:1px solid var(--line-2); border-radius:var(--radius); overflow:hidden; background:var(--navy-2)}
+  .matrix .row{display:grid; grid-template-columns:1.2fr 1fr 1fr; border-top:1px solid var(--line-2); font-size:.94rem}
+  .matrix .row:first-child{border-top:none; background:rgba(255,255,255,.04); font-family:var(--sans); font-size:.74rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted-navy)}
+  .matrix .cell{padding:15px 16px}
+  .matrix .cell+.cell{border-left:1px solid var(--line-2)}
+  .matrix .hl{color:#fff; font-weight:600}
+  .matrix .x{color:var(--muted-navy)}
+
+  /* pricing */
+  .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:48px; align-items:start}
+  @media(max-width:880px){ .plans{grid-template-columns:1fr} }
+  .plan{border:1px solid var(--line); border-radius:var(--radius); padding:30px; background:var(--surface); display:flex; flex-direction:column}
+  .plan.feat{border-color:var(--accent); box-shadow:0 20px 50px -34px rgba(28,95,168,.6)}
+  .plan .tag{font-family:var(--sans); font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .plan.feat .tag{color:var(--accent)}
+  .plan .price{font-family:var(--serif); font-size:2.1rem; font-weight:600; margin-top:14px}
+  .plan .price small{font-size:.9rem; color:var(--muted); font-weight:400; font-family:var(--sans)}
+  .plan .desc{color:var(--muted); font-size:.92rem; margin-top:6px}
+  .plan ul{list-style:none; padding:0; margin:22px 0 26px; display:flex; flex-direction:column; gap:12px; font-size:.93rem}
+  .plan li{display:flex; gap:10px; align-items:flex-start}
+  .plan li svg{flex:0 0 auto; margin-top:4px; color:var(--good)}
+  .plan .btn{margin-top:auto; width:100%}
+  .price-note{margin-top:24px; font-size:.86rem; color:var(--muted); text-align:center}
+
+  /* testimonial / results */
+  .results{background:var(--surface); border-block:1px solid var(--line)}
+  .results-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:28px; margin-top:44px; align-items:stretch}
+  @media(max-width:880px){ .results-grid{grid-template-columns:1fr} }
+  .quote{padding:34px; border:1px solid var(--line); border-radius:var(--radius); background:var(--bg); position:relative}
+  .quote .mk{font-family:var(--serif); font-size:4rem; line-height:.6; color:var(--gold); height:30px}
+  .quote p{font-family:var(--serif); font-size:1.3rem; line-height:1.45; margin-top:6px}
+  .quote .by{margin-top:20px; font-size:.9rem; color:var(--muted)}
+  .quote .by b{color:var(--ink)}
+  .metrics{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+  .metric{border:1px solid var(--line); border-radius:var(--radius); padding:22px; background:var(--bg); display:flex; flex-direction:column; justify-content:center}
+  .metric .m{font-family:var(--serif); font-size:2rem; font-weight:600; color:var(--accent)}
+  .metric small{color:var(--muted); font-size:.86rem; margin-top:6px}
+
+  /* faq */
+  details{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer; padding:20px 4px; font-family:var(--serif); font-weight:600; font-size:1.12rem; list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{color:var(--accent); font-size:1.4rem; line-height:1; transition:transform .2s; flex:0 0 auto}
+  details[open] summary .plus{transform:rotate(45deg)}
+  details .ans{padding:0 4px 22px; color:var(--muted); font-size:1rem; max-width:70ch}
+
+  /* final cta */
+  .final{background:
+      linear-gradient(180deg, color-mix(in srgb,var(--navy-2) 82%, transparent), color-mix(in srgb,var(--navy-2) 92%, transparent)),
+      url('office.jpg') center/cover no-repeat,
+      var(--navy-2);
+    color:var(--on-navy); position:relative; overflow:hidden}
+  .final .wrap{text-align:center}
+  .final h2{color:#fff; font-size:clamp(2rem,4.5vw,3rem)}
+  .final p{margin:18px auto 0; color:var(--muted-navy); max-width:48ch; font-size:1.08rem}
+  .final .cta{margin-top:32px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap}
+  .final .contact{margin-top:26px; font-size:.92rem; color:var(--muted-navy)}
+  .final .contact b{color:#fff}
+
+  footer{background:var(--navy-2); color:var(--muted-navy)}
+  footer .wrap{display:flex; flex-wrap:wrap; gap:26px 48px; justify-content:space-between; padding-block:46px; font-size:.88rem}
+  footer .brand{margin-bottom:12px}
+  footer p{max-width:280px; color:var(--muted-navy)}
+  footer a{color:var(--muted-navy); text-decoration:none; display:block; margin-top:9px}
+  footer a:hover{color:var(--on-navy)}
+  .foot-sec{font-family:var(--sans); font-weight:700; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--on-navy); margin-bottom:4px}
+  .legal{border-top:1px solid var(--line-2)}
+  .legal .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-block:18px; font-size:.8rem}
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
+</style>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+        <rect x="1" y="1" width="32" height="32" rx="6" stroke="var(--gold)" stroke-width="1.5"/>
+        <path d="M10 24V11l7 8 7-8v13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Nortia <span class="sub">CFO</span>
+    </div>
+    <nav>
+      <a href="#servicios">Servicios</a>
+      <a href="#proceso">MetodologÃ­a</a>
+      <a href="#planes">Planes</a>
+      <a href="#faq">Preguntas</a>
+    </nav>
+    <a class="nav-cta" href="#agendar">Agendar reuniÃ³n</a>
+    <button class="theme-btn" id="theme" aria-label="Cambiar tema">â—</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" style="color:var(--gold)">DirecciÃ³n financiera externa</span>
+      <h1>La solidez financiera de una gran empresa, al alcance de la suya.</h1>
+      <p class="lede">AcompaÃ±amos a PyMEs y empresas en crecimiento con un director de finanzas experimentado, control de caja riguroso y decisiones respaldadas en datos â€” sin el costo de una contrataciÃ³n de planta.</p>
+      <div class="cta">
+        <a class="btn btn-light" href="#agendar">Agendar reuniÃ³n de diagnÃ³stico</a>
+        <a class="btn btn-ghost" href="#servicios" style="color:#fff; border-color:var(--line-2)">Conocer servicios</a>
+      </div>
+      <div class="assure">
+        <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Confidencialidad garantizada</span>
+        <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Sin permanencia mÃ­nima</span>
+        <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Primera reuniÃ³n sin costo</span>
+      </div>
+    </div>
+
+    <div class="demo" aria-label="DemostraciÃ³n del panel financiero (ejemplo)">
+      <div class="demo-top">
+        <span class="demo-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="demo-ttl">Panel Nortia</span>
+        <span class="demo-live"><span class="dotlive" aria-hidden="true"></span> ejemplo en vivo</span>
+      </div>
+      <div class="demo-tabs" role="tablist" aria-label="Vistas del panel">
+        <button class="dt active" role="tab" aria-selected="true" data-tab="caja">Flujo de caja</button>
+        <button class="dt" role="tab" aria-selected="false" data-tab="margen">Rentabilidad</button>
+        <button class="dt" role="tab" aria-selected="false" data-tab="kpi">Indicadores</button>
+      </div>
+      <div class="demo-body">
+        <div class="demo-panel" data-panel="caja" role="tabpanel">
+          <svg class="demo-chart" viewBox="0 0 320 96" aria-hidden="true">
+            <defs><linearGradient id="gcaja" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0" stop-color="var(--accent)" stop-opacity=".30"/>
+              <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+            <path d="M0,72 L26,66 L52,69 L78,56 L104,60 L130,46 L156,50 L182,38 L208,41 L234,28 L260,31 L286,18 L320,12 L320,96 L0,96 Z" fill="url(#gcaja)"/>
+            <path class="anim" data-anim="draw" d="M0,72 L26,66 L52,69 L78,56 L104,60 L130,46 L156,50 L182,38 L208,41 L234,28 L260,31 L286,18 L320,12" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="320" cy="12" r="3.6" fill="var(--accent)"/>
+          </svg>
+          <div class="dkpis">
+            <div class="dkpi"><div class="l">Caja a 90 dÃ­as</div><div class="v">Estable <small>â–²</small></div></div>
+            <div class="dkpi"><div class="l">Runway</div><div class="v">11 <small style="color:var(--muted)">meses</small></div></div>
+          </div>
+        </div>
+        <div class="demo-panel" data-panel="margen" role="tabpanel" hidden>
+          <svg class="demo-chart" viewBox="0 0 320 96" aria-hidden="true">
+            <rect class="anim" data-anim="grow" x="16" y="52" width="40" height="36" rx="3" fill="var(--accent)" opacity=".55"/>
+            <rect class="anim" data-anim="grow" x="78" y="44" width="40" height="44" rx="3" fill="var(--accent)" opacity=".65"/>
+            <rect class="anim" data-anim="grow" x="140" y="48" width="40" height="40" rx="3" fill="var(--accent)" opacity=".75"/>
+            <rect class="anim" data-anim="grow" x="202" y="30" width="40" height="58" rx="3" fill="var(--accent)" opacity=".85"/>
+            <rect class="anim" data-anim="grow" x="264" y="18" width="40" height="70" rx="3" fill="var(--gold)"/>
+          </svg>
+          <div class="dkpis">
+            <div class="dkpi"><div class="l">Margen bruto</div><div class="v">47% <small>+3 pts</small></div></div>
+            <div class="dkpi"><div class="l">EBITDA</div><div class="v">18% <small>+2 pts</small></div></div>
+          </div>
+        </div>
+        <div class="demo-panel" data-panel="kpi" role="tabpanel" hidden>
+          <div class="dkpis grid4">
+            <div class="dkpi"><div class="l">DÃ­as de cobro</div><div class="v">38 <small style="color:var(--muted)">d</small></div></div>
+            <div class="dkpi"><div class="l">DÃ­as de pago</div><div class="v">45 <small style="color:var(--muted)">d</small></div></div>
+            <div class="dkpi"><div class="l">Liquidez</div><div class="v">1,8<small style="color:var(--muted)">x</small></div></div>
+            <div class="dkpi"><div class="l">Endeudamiento</div><div class="v">0,6<small style="color:var(--muted)">x</small></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="card-note" style="padding:0 18px 16px">Datos ilustrativos. No corresponden a un cliente real.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap">
+    <span class="lbl">Trabajamos sobre sus sistemas contables:</span>
+    <b>Nubox</b><b>Defontana</b><b>QuickBooks</b><b>Xero</b><b>Bsale</b>
+  </div>
+</div>
+
+<!-- VALUE -->
+<section id="valor">
+  <div class="wrap">
+    <div class="sec-head">
+      <hr class="rule">
+      <span class="eyebrow">Por quÃ© importa</span>
+      <h2>Decisiones de millones no deberÃ­an tomarse a ciegas.</h2>
+      <p class="lead">La mayorÃ­a de las empresas en crecimiento llega a un punto en que la contabilidad ya no basta: hacen falta proyecciones, criterio y una mirada estratÃ©gica de las finanzas. Un CFO de planta resuelve eso, pero su costo anual supera lo que una PyME puede asumir. Nosotros entregamos esa misma capacidad, de forma externa y a su medida.</p>
+    </div>
+    <div class="cols3">
+      <div class="vcard">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 5-7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Visibilidad de su caja</h3>
+        <p>Sepa con anticipaciÃ³n cuÃ¡nta liquidez tendrÃ¡, quÃ© compromisos priorizar y cuÃ¡ndo actuar â€” antes de que el problema aparezca.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Decisiones a tiempo</h3>
+        <p>Precios, inversiones, contrataciones y financiamiento evaluados con informaciÃ³n confiable y un criterio que ya ha estado en esa silla.</p>
+      </div>
+      <div class="vcard">
+        <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Tranquilidad y respaldo</h3>
+        <p>Sus nÃºmeros ordenados y defendibles frente a bancos, inversionistas, auditores o un eventual comprador. Sin sobresaltos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="servicios" class="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <hr class="rule">
+      <span class="eyebrow">Servicios</span>
+      <h2>Un Ã¡rea de finanzas completa, a su disposiciÃ³n.</h2>
+      <p class="lead">Estructuramos el servicio segÃºn su etapa. Puede comenzar por lo esencial y ampliar cuando necesite levantar capital, auditar o planificar una expansiÃ³n.</p>
+    </div>
+    <div class="bento">
+      <article class="svc big">
+        <div>
+          <span class="feat-badge">Lo mÃ¡s solicitado</span>
+          <h3>PlanificaciÃ³n y control de caja</h3>
+          <p>El corazÃ³n del servicio: proyecciÃ³n de flujo de caja a 13 semanas y seguimiento continuo de su liquidez, para que ninguna decisiÃ³n lo tome por sorpresa y siempre sepa cuÃ¡nto puede comprometer.</p>
+        </div>
+        <div class="big-foot">
+          <span class="pill">13 semanas de visibilidad</span>
+          <span class="pill">Alertas tempranas</span>
+        </div>
+      </article>
+      <article class="svc"><div class="idx">II</div><h3>Reportes de gestiÃ³n mensuales</h3><p>Informe ejecutivo claro cada mes: quÃ© ocurriÃ³, por quÃ© y las decisiones prioritarias.</p></article>
+      <article class="svc"><div class="idx">III</div><h3>Indicadores y tableros</h3><p>Sus mÃ©tricas clave monitoreadas y presentadas de forma legible.</p></article>
+      <article class="svc wide"><div class="idx">IV</div><h3>Presupuesto y modelaciÃ³n financiera</h3><p>Presupuesto anual y modelo con escenarios base, optimista y de estrÃ©s, que resisten las preguntas de un directorio o un inversionista.</p></article>
+      <article class="svc wide"><div class="idx">V</div><h3>Financiamiento y levantamiento de capital</h3><p>Modelo, documentaciÃ³n y narrativa financiera para rondas, deuda o lÃ­neas de crÃ©dito â€” con acompaÃ±amiento a la mesa de negociaciÃ³n.</p></article>
+      <article class="svc wide"><div class="idx">VI</div><h3>Due diligence y auditorÃ­a</h3><p>Dejamos su informaciÃ³n ordenada y respaldada para una auditorÃ­a, la venta de la empresa o el ingreso de un nuevo socio.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="proceso">
+  <div class="wrap">
+    <div class="sec-head">
+      <hr class="rule">
+      <span class="eyebrow">MetodologÃ­a</span>
+      <h2>Un proceso probado, en cuatro etapas.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>DiagnÃ³stico</h3><p>Analizamos su situaciÃ³n actual, conectamos sus sistemas y detectamos los principales focos de riesgo.</p></div>
+      <div class="step"><div class="n">2</div><h3>EstructuraciÃ³n</h3><p>Ordenamos la informaciÃ³n y construimos el modelo de caja, el presupuesto y los indicadores base.</p></div>
+      <div class="step"><div class="n">3</div><h3>ImplementaciÃ³n</h3><p>Entregamos sus tableros y el primer informe ejecutivo, con recomendaciones concretas y accionables.</p></div>
+      <div class="step"><div class="n">4</div><h3>AcompaÃ±amiento</h3><p>ReuniÃ³n mensual de anÃ¡lisis, proyecciones actualizadas y su CFO disponible para las decisiones crÃ­ticas.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATOR -->
+<section id="diferencia" class="diff">
+  <div class="wrap split">
+    <div>
+      <hr class="rule">
+      <span class="eyebrow" style="color:var(--gold)">Nuestra diferencia</span>
+      <h2 style="margin-top:8px">MÃ¡s que contabilidad: un socio estratÃ©gico.</h2>
+      <p class="lead">Su contador registra y cumple con las obligaciones; es indispensable y seguimos trabajando a su lado. Nuestro rol es distinto: tomamos esa informaciÃ³n y la proyectamos hacia el futuro para guiar las decisiones que hacen crecer su empresa. Apoyamos el anÃ¡lisis con herramientas que automatizan el trabajo manual, de modo que el tiempo se dedique al criterio, no a las planillas.</p>
+      <a class="btn btn-light" href="#agendar" style="margin-top:28px">Conversemos su caso</a>
+    </div>
+    <div class="matrix" role="table" aria-label="ComparaciÃ³n de servicios">
+      <div class="row" role="row"><div class="cell">&nbsp;</div><div class="cell">Contabilidad</div><div class="cell" style="color:#fff">Nortia CFO</div></div>
+      <div class="row" role="row"><div class="cell x">Enfoque</div><div class="cell x">El pasado</div><div class="cell hl">El futuro</div></div>
+      <div class="row" role="row"><div class="cell x">Flujo de caja</div><div class="cell x">Mensual</div><div class="cell hl">Semanal</div></div>
+      <div class="row" role="row"><div class="cell x">Financiamiento</div><div class="cell x">â€”</div><div class="cell hl">AcompaÃ±amiento</div></div>
+      <div class="row" role="row"><div class="cell x">Decisiones</div><div class="cell x">A su cargo</div><div class="cell hl">Asesoradas</div></div>
+      <div class="row" role="row"><div class="cell x">Disponibilidad</div><div class="cell x">Cierre de mes</div><div class="cell hl">Permanente</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="planes">
+  <div class="wrap">
+    <div class="sec-head center">
+      <hr class="rule" style="margin-inline:auto">
+      <span class="eyebrow">Planes</span>
+      <h2>Honorarios fijos mensuales, sin sorpresas.</h2>
+      <p class="lead">Elija el nivel acorde a su etapa. Puede ajustar su plan mes a mes, segÃºn evolucione su empresa.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <div class="tag">Esencial</div>
+        <div class="price tnum">$690.000<small> / mes</small></div>
+        <p class="desc">Para ordenar la caja y ganar visibilidad.</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> ProyecciÃ³n de caja a 13 semanas</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Tablero de indicadores clave</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Informe ejecutivo mensual</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Una reuniÃ³n mensual</li>
+        </ul>
+        <a class="btn btn-ghost" href="#agendar">Comenzar</a>
+      </div>
+      <div class="plan feat">
+        <div class="tag">Crecimiento Â· recomendado</div>
+        <div class="price tnum">$1.290.000<small> / mes</small></div>
+        <p class="desc">Para escalar con control y respaldo.</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Todo lo del plan Esencial</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Presupuesto y modelo con escenarios</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Reuniones quincenales de gestiÃ³n</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> CFO disponible de forma continua</li>
+        </ul>
+        <a class="btn btn-primary" href="#agendar">Comenzar</a>
+      </div>
+      <div class="plan">
+        <div class="tag">Capital</div>
+        <div class="price tnum">A su medida</div>
+        <p class="desc">Para levantar capital o vender la empresa.</p>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Todo lo del plan Crecimiento</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> DocumentaciÃ³n para inversionistas</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> AcompaÃ±amiento en la negociaciÃ³n</li>
+          <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Soporte en due diligence</li>
+        </ul>
+        <a class="btn btn-ghost" href="#agendar">Solicitar propuesta</a>
+      </div>
+    </div>
+    <p class="price-note">Honorarios de referencia en pesos chilenos Â· facturaciÃ³n mensual Â· sin permanencia mÃ­nima.</p>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="resultados" class="results">
+  <div class="wrap">
+    <div class="sec-head">
+      <hr class="rule">
+      <span class="eyebrow">Impacto</span>
+      <h2>Lo que cambia al tener un CFO a su lado.</h2>
+    </div>
+    <div class="results-grid">
+      <div class="quote">
+        <div class="mk">â€œ</div>
+        <p>Pasamos de no saber si llegÃ¡bamos a fin de mes a proyectar la caja con tres meses de anticipaciÃ³n. Hoy tomamos decisiones con informaciÃ³n, no con incertidumbre.</p>
+        <div class="by"><b>Perfil de cliente tipo</b> â€” empresa de comercio, 18 colaboradores</div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="m tnum" data-count="90" data-suffix=" dÃ­as">90 dÃ­as</div><small>de anticipaciÃ³n promedio en la proyecciÃ³n de caja</small></div>
+        <div class="metric"><div class="m tnum" data-count="6" data-prefix="+" data-suffix=" pts">+6 pts</div><small>de mejora tÃ­pica en margen en el primer semestre</small></div>
+        <div class="metric"><div class="m tnum" data-count="40" data-prefix="âˆ’" data-suffix="%">âˆ’40%</div><small>de tiempo del equipo dedicado a planillas manuales</small></div>
+        <div class="metric"><div class="m tnum">24â€“48 h</div><small>para responder una decisiÃ³n financiera urgente</small></div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:.8rem; margin-top:18px">Cifras ilustrativas de resultados esperados. No constituyen una garantÃ­a ni asesorÃ­a de inversiÃ³n.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap" style="max-width:860px">
+    <div class="sec-head center">
+      <hr class="rule" style="margin-inline:auto">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvemos sus dudas.</h2>
+    </div>
+    <div style="margin-top:36px">
+      <details open><summary>Â¿En quÃ© se diferencia de mi contador?<span class="plus">+</span></summary><div class="ans">Su contador registra el pasado y cumple con el SII; es fundamental y seguimos trabajando a su lado. Nosotros usamos esa informaciÃ³n para mirar hacia adelante: proyectar la caja, definir precios y planificar el crecimiento y el financiamiento.</div></details>
+      <details><summary>Â¿Es segura la informaciÃ³n que comparto?<span class="plus">+</span></summary><div class="ans">SÃ­. Operamos con accesos de solo lectura cuando es posible, acuerdos de confidencialidad firmados y un manejo de datos bajo estÃ¡ndares de seguridad. Su informaciÃ³n nunca se comparte con terceros.</div></details>
+      <details><summary>Â¿Necesito tener la contabilidad ordenada para comenzar?<span class="plus">+</span></summary><div class="ans">No. Ordenar y estructurar su informaciÃ³n es justamente parte del trabajo de las primeras semanas. Partimos desde donde usted se encuentre hoy.</div></details>
+      <details><summary>Â¿Existe contrato de permanencia?<span class="plus">+</span></summary><div class="ans">No. La facturaciÃ³n es mensual y puede ampliar, reducir o pausar el servicio avisando con 30 dÃ­as de anticipaciÃ³n. Buscamos que permanezca por los resultados, no por un contrato.</div></details>
+      <details><summary>Â¿Para quÃ© tamaÃ±o de empresa estÃ¡ pensado?<span class="plus">+</span></summary><div class="ans">Desde empresas con primeras ventas consolidadas hasta compaÃ±Ã­as de alrededor de 100 colaboradores. Si tiene dudas sobre su caso, agende una reuniÃ³n y le diremos con honestidad si podemos aportarle valor.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="agendar" class="final">
+  <div class="aurora" aria-hidden="true" style="opacity:.22"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+  <div class="wrap" style="position:relative; z-index:1">
+    <hr class="rule" style="margin-inline:auto; background:var(--gold)">
+    <h2>Conversemos sobre el futuro financiero de su empresa.</h2>
+    <p>Una reuniÃ³n de 30 minutos, sin costo ni compromiso. SaldrÃ¡ con tres observaciones concretas sobre sus finanzas, las implemente con nosotros o por su cuenta.</p>
+    <div class="cta">
+      <a class="btn btn-light" href="#agendar" onclick="return false">Agendar mi reuniÃ³n</a>
+      <a class="btn btn-ghost" href="#planes" style="color:#fff; border-color:var(--line-2)">Ver planes</a>
+    </div>
+    <p class="contact">EscrÃ­banos: <b>contacto@nortiacfo.cl</b> &nbsp;Â·&nbsp; <b>+56 9 0000 0000</b></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="brand" style="color:var(--on-navy)">
+        <svg class="mark" viewBox="0 0 34 34" fill="none" aria-hidden="true"><rect x="1" y="1" width="32" height="32" rx="6" stroke="var(--gold)" stroke-width="1.5"/><path d="M10 24V11l7 8 7-8v13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Nortia <span class="sub">CFO</span>
+      </div>
+      <p>DirecciÃ³n financiera externa para PyMEs y empresas en crecimiento de LatinoamÃ©rica.</p>
+    </div>
+    <div><div class="foot-sec">Servicio</div><a href="#servicios">Servicios</a><a href="#proceso">MetodologÃ­a</a><a href="#planes">Planes</a><a href="#resultados">Impacto</a></div>
+    <div><div class="foot-sec">Empresa</div><a href="#diferencia">Nuestra diferencia</a><a href="#faq">Preguntas</a><a href="#agendar">Contacto</a></div>
+    <div><div class="foot-sec">Confianza</div><a href="#faq">Seguridad de datos</a><a href="#faq">Confidencialidad</a></div>
+  </div>
+  <div class="legal">
+    <div class="wrap">
+      <span>Â© 2026 Nortia CFO Â· Santiago, Chile</span>
+      <span>TÃ©rminos Â· Privacidad Â· Maqueta de marca de ejemplo</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var root=document.documentElement, btn=document.getElementById('theme');
+    try{ var s=localStorage.getItem('nortia-theme'); if(s) root.setAttribute('data-theme',s); }catch(e){}
+    btn.addEventListener('click',function(){
+      var cur=root.getAttribute('data-theme');
+      var dark=cur? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      var next=dark?'light':'dark';
+      root.setAttribute('data-theme',next);
+      try{ localStorage.setItem('nortia-theme',next); }catch(e){}
+    });
+  })();
+
+  // Conteo animado de indicadores (texto completo visible en reposo)
+  (function(){
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els=[].slice.call(document.querySelectorAll('[data-count]'));
+    if(reduce || !('IntersectionObserver' in window)) return;
+    function render(el,v){
+      var p=el.getAttribute('data-prefix')||'', s=el.getAttribute('data-suffix')||'';
+      el.textContent=p+v.toLocaleString('es-CL')+s;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        var el=en.target, target=+el.getAttribute('data-count'), start=null, dur=1200;
+        io.unobserve(el);
+        function step(ts){
+          if(!start) start=ts;
+          var t=Math.min((ts-start)/dur,1), e=1-Math.pow(1-t,3);
+          render(el, Math.round(target*e));
+          if(t<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    },{threshold:.5});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // Panel interactivo: cambio de pestaÃ±as (contenido completo visible en reposo)
+  (function(){
+    var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var demo=document.querySelector('.demo'); if(!demo) return;
+    var tabs=[].slice.call(demo.querySelectorAll('.dt'));
+    var panels=[].slice.call(demo.querySelectorAll('.demo-panel'));
+    function animate(panel){
+      if(reduce) return;
+      panel.querySelectorAll('.anim').forEach(function(el){
+        var k=el.getAttribute('data-anim');
+        el.classList.remove(k); void el.getBBox; void el.offsetWidth; el.classList.add(k);
+      });
+    }
+    function show(name){
+      tabs.forEach(function(t){ var on=t.getAttribute('data-tab')===name; t.classList.toggle('active',on); t.setAttribute('aria-selected',on?'true':'false'); });
+      panels.forEach(function(p){ var on=p.getAttribute('data-panel')===name; p.hidden=!on; if(on) animate(p); });
+    }
+    tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.getAttribute('data-tab')); }); });
+    var first=demo.querySelector('.demo-panel:not([hidden])'); if(first) animate(first);
+  })();
+</script>
+
+</html>
+
+
