@@ -265,6 +265,85 @@
   .legal{border-top:1px solid var(--line-2)}
   .legal .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; padding-block:18px; font-size:.8rem}
 
+  /* hero impact stats */
+  .hero-stats{margin-top:28px; display:flex; gap:26px; flex-wrap:wrap; align-items:center}
+  .hero-stats .hs{display:flex; flex-direction:column}
+  .hero-stats .hs b{font-family:var(--serif); font-size:1.65rem; font-weight:700; color:#fff; line-height:1}
+  .hero-stats .hs span{font-size:.76rem; color:var(--muted-navy); margin-top:6px; max-width:17ch}
+  .hero-stats .sep{width:1px; align-self:stretch; min-height:40px; background:var(--line-2)}
+  @media(max-width:560px){ .hero-stats .sep{display:none} .hero-stats{gap:16px 26px} }
+
+  /* demo headline figure + legend */
+  .demo-figure{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:12px}
+  .demo-figure .big{font-family:var(--serif); font-weight:700; font-size:1.6rem; letter-spacing:-.02em}
+  .demo-figure .big small{font-family:var(--sans); font-size:.78rem; color:var(--muted); font-weight:600}
+  .demo-figure .chg{font-size:.74rem; font-weight:700; color:var(--good); background:color-mix(in srgb,var(--good) 13%, transparent); padding:4px 9px; border-radius:999px; white-space:nowrap}
+  .demo-legend{display:flex; flex-wrap:wrap; gap:6px 16px; margin-top:10px; font-size:.68rem; color:var(--muted)}
+  .demo-legend i{display:inline-block; width:9px; height:9px; border-radius:2px; margin-right:5px; vertical-align:middle}
+
+  /* social proof logos */
+  .logos{background:var(--surface); border-bottom:1px solid var(--line)}
+  .logos .wrap{padding-block:34px}
+  .logos .lead{text-align:center; font-size:.84rem; color:var(--muted); font-weight:600}
+  .logo-row{display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:20px}
+  .logo-chip{display:flex; align-items:center; gap:9px; border:1px solid var(--line); border-radius:999px; padding:10px 18px; background:var(--bg); color:var(--muted); font-weight:700; font-size:.95rem; transition:border-color .2s,color .2s}
+  .logo-chip:hover{border-color:color-mix(in srgb,var(--accent) 45%,var(--line)); color:var(--ink)}
+  .logo-chip svg{color:var(--accent); flex:0 0 auto}
+
+  /* case study card */
+  .case{border:1px solid var(--line); border-radius:var(--radius); background:var(--bg); overflow:hidden}
+  .case-head{display:flex; align-items:center; gap:14px; padding:22px 26px; border-bottom:1px solid var(--line)}
+  .avatar{width:48px; height:48px; border-radius:50%; background:var(--navy); color:#fff; display:grid; place-items:center; font-family:var(--serif); font-weight:700; font-size:1.05rem; flex:0 0 auto}
+  .case-head .who b{display:block; color:var(--ink); font-weight:700}
+  .case-head .who span{font-size:.85rem; color:var(--muted)}
+  .case-body{padding:24px 26px}
+  .case-body .q{font-family:var(--serif); font-size:1.18rem; line-height:1.45}
+  .runway{margin-top:22px; background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:16px 18px}
+  .runway .rt{font-size:.66rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+  .runway-bars{display:flex; align-items:flex-end; justify-content:center; gap:26px; margin-top:14px}
+  .rb{text-align:center}
+  .rb .bar{width:50px; border-radius:6px 6px 0 0; margin:0 auto 8px}
+  .rb .bar.before{background:var(--line)}
+  .rb .bar.after{background:var(--accent)}
+  .rb .val{font-family:var(--serif); font-weight:700; font-size:1.1rem}
+  .rb .lab{font-size:.72rem; color:var(--muted); margin-top:2px}
+  .runway-bars .arrow{color:var(--good); font-weight:700; font-size:1.4rem; align-self:center; padding-bottom:26px}
+
+  /* pricing value anchor */
+  .anchor{margin-top:30px; border:1px dashed color-mix(in srgb,var(--gold) 55%,var(--line)); background:color-mix(in srgb,var(--gold) 7%, transparent); border-radius:var(--radius); padding:20px 26px; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; text-align:center}
+  .anchor .ac{display:flex; flex-direction:column}
+  .anchor .ac .k{font-size:.74rem; color:var(--muted); font-weight:600}
+  .anchor .ac .v{font-family:var(--serif); font-weight:700; font-size:1.3rem; margin-top:2px}
+  .anchor .ac .v.strike{text-decoration:line-through; color:var(--muted); font-weight:600}
+  .anchor .arw{color:var(--gold); font-size:1.4rem; font-weight:700}
+  .anchor .save{background:var(--good); color:#fff; border-radius:8px; padding:9px 15px; font-weight:700; font-size:.92rem}
+
+  /* scheduling modal */
+  .modal{position:fixed; inset:0; z-index:60; display:grid; place-items:center; padding:20px; background:rgba(8,18,32,.6); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px)}
+  .modal[hidden]{display:none}
+  .modal-box{background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:14px; width:100%; max-width:480px; max-height:90vh; overflow:auto; box-shadow:0 40px 90px -30px rgba(4,20,40,.65)}
+  .modal-head{display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:24px 26px 0}
+  .modal-head h3{font-size:1.35rem}
+  .modal-head p{color:var(--muted); font-size:.92rem; margin-top:6px}
+  .modal-close{background:var(--bg); border:1px solid var(--line); border-radius:8px; width:34px; height:34px; cursor:pointer; color:var(--muted); font-size:1rem; flex:0 0 auto}
+  .modal-close:hover{color:var(--ink)}
+  .modal-body{padding:18px 26px 26px}
+  .field{margin-top:14px}
+  .field label{display:block; font-size:.78rem; font-weight:600; color:var(--ink); margin-bottom:6px}
+  .field input{width:100%; border:1px solid var(--line); border-radius:8px; padding:12px 13px; font-family:var(--sans); font-size:.98rem; background:var(--bg); color:var(--ink)}
+  .field input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft)}
+  .slot-label{font-size:.78rem; font-weight:600; margin:20px 0 8px}
+  .slots{display:grid; grid-template-columns:repeat(3,1fr); gap:8px}
+  .slot{border:1px solid var(--line); background:var(--bg); border-radius:8px; padding:11px 4px; font-family:var(--sans); font-size:.82rem; font-weight:600; color:var(--ink); cursor:pointer; text-align:center}
+  .slot:hover{border-color:var(--accent)}
+  .slot.sel{background:var(--accent); color:#fff; border-color:var(--accent)}
+  .modal .btn{width:100%; margin-top:20px}
+  .modal-note{font-size:.72rem; color:var(--muted); margin-top:12px; text-align:center}
+  .modal-ok{text-align:center}
+  .ok-ico{width:56px; height:56px; border-radius:50%; background:color-mix(in srgb,var(--good) 15%,transparent); color:var(--good); display:grid; place-items:center; margin:4px auto 16px}
+  .modal-ok h3{font-size:1.35rem}
+  .modal-ok p{color:var(--muted); margin-top:10px; font-size:.95rem}
+
   @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 </style>
 
@@ -295,7 +374,7 @@
     <div>
       <span class="eyebrow" style="color:var(--gold)">Dirección financiera externa</span>
       <h1>La solidez financiera de una gran empresa, al alcance de la suya.</h1>
-      <p class="lede">Acompañamos a PyMEs y empresas en crecimiento con un director de finanzas experimentado, control de caja riguroso y decisiones respaldadas en datos — sin el costo de una contratación de planta.</p>
+      <p class="lede">Optimizamos su caja a 90 días, ordenamos sus números y le damos claridad para decidir — con un director de finanzas experimentado, sin el costo de una contratación de planta.</p>
       <div class="cta">
         <a class="btn btn-light" href="#agendar">Agendar reunión de diagnóstico</a>
         <a class="btn btn-ghost" href="#servicios" style="color:#fff; border-color:var(--line-2)">Conocer servicios</a>
@@ -304,6 +383,13 @@
         <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Confidencialidad garantizada</span>
         <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Sin permanencia mínima</span>
         <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Primera reunión sin costo</span>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><b class="tnum">90 días</b><span>de visibilidad de su caja</span></div>
+        <div class="sep"></div>
+        <div class="hs"><b class="tnum">−40%</b><span>menos tiempo en planillas</span></div>
+        <div class="sep"></div>
+        <div class="hs"><b class="tnum">4 sem</b><span>del caos al control</span></div>
       </div>
     </div>
 
@@ -320,27 +406,45 @@
       </div>
       <div class="demo-body">
         <div class="demo-panel" data-panel="caja" role="tabpanel">
-          <svg class="demo-chart" viewBox="0 0 320 96" aria-hidden="true">
+          <div class="demo-figure">
+            <div class="big">$182,4<small> M CLP</small></div>
+            <div class="chg">▲ 14,2% vs. mes previo</div>
+          </div>
+          <svg class="demo-chart" viewBox="0 0 320 104" aria-hidden="true">
             <defs><linearGradient id="gcaja" x1="0" x2="0" y1="0" y2="1">
               <stop offset="0" stop-color="var(--accent)" stop-opacity=".30"/>
               <stop offset="1" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs>
+            <line x1="0" y1="26" x2="320" y2="26" stroke="var(--line)" stroke-width="1"/>
+            <line x1="0" y1="52" x2="320" y2="52" stroke="var(--line)" stroke-width="1"/>
+            <line x1="0" y1="78" x2="320" y2="78" stroke="var(--line)" stroke-width="1"/>
+            <line x1="0" y1="66" x2="320" y2="66" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 4" opacity=".5"/>
             <path d="M0,72 L26,66 L52,69 L78,56 L104,60 L130,46 L156,50 L182,38 L208,41 L234,28 L260,31 L286,18 L320,12 L320,96 L0,96 Z" fill="url(#gcaja)"/>
             <path class="anim" data-anim="draw" d="M0,72 L26,66 L52,69 L78,56 L104,60 L130,46 L156,50 L182,38 L208,41 L234,28 L260,31 L286,18 L320,12" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             <circle cx="320" cy="12" r="3.6" fill="var(--accent)"/>
           </svg>
+          <div class="demo-legend"><span><i style="background:var(--accent)"></i>Caja proyectada (13 sem)</span><span><i style="background:var(--muted);opacity:.55"></i>Meta mínima</span></div>
           <div class="dkpis">
             <div class="dkpi"><div class="l">Caja a 90 días</div><div class="v">Estable <small>▲</small></div></div>
             <div class="dkpi"><div class="l">Runway</div><div class="v">11 <small style="color:var(--muted)">meses</small></div></div>
+            <div class="dkpi"><div class="l">Burn neto</div><div class="v">$16,6<small style="color:var(--muted)">M/m</small></div></div>
           </div>
         </div>
         <div class="demo-panel" data-panel="margen" role="tabpanel" hidden>
-          <svg class="demo-chart" viewBox="0 0 320 96" aria-hidden="true">
+          <div class="demo-figure">
+            <div class="big">47,0<small> % margen bruto</small></div>
+            <div class="chg">▲ 3,0 pts interanual</div>
+          </div>
+          <svg class="demo-chart" viewBox="0 0 320 104" aria-hidden="true">
+            <line x1="0" y1="26" x2="320" y2="26" stroke="var(--line)" stroke-width="1"/>
+            <line x1="0" y1="52" x2="320" y2="52" stroke="var(--line)" stroke-width="1"/>
+            <line x1="0" y1="78" x2="320" y2="78" stroke="var(--line)" stroke-width="1"/>
             <rect class="anim" data-anim="grow" x="16" y="52" width="40" height="36" rx="3" fill="var(--accent)" opacity=".55"/>
             <rect class="anim" data-anim="grow" x="78" y="44" width="40" height="44" rx="3" fill="var(--accent)" opacity=".65"/>
             <rect class="anim" data-anim="grow" x="140" y="48" width="40" height="40" rx="3" fill="var(--accent)" opacity=".75"/>
             <rect class="anim" data-anim="grow" x="202" y="30" width="40" height="58" rx="3" fill="var(--accent)" opacity=".85"/>
             <rect class="anim" data-anim="grow" x="264" y="18" width="40" height="70" rx="3" fill="var(--gold)"/>
           </svg>
+          <div class="demo-legend"><span>T1</span><span>T2</span><span>T3</span><span>T4</span><span style="color:var(--gold);font-weight:700">Proy.</span></div>
           <div class="dkpis">
             <div class="dkpi"><div class="l">Margen bruto</div><div class="v">47% <small>+3 pts</small></div></div>
             <div class="dkpi"><div class="l">EBITDA</div><div class="v">18% <small>+2 pts</small></div></div>
@@ -352,6 +456,8 @@
             <div class="dkpi"><div class="l">Días de pago</div><div class="v">45 <small style="color:var(--muted)">d</small></div></div>
             <div class="dkpi"><div class="l">Liquidez</div><div class="v">1,8<small style="color:var(--muted)">x</small></div></div>
             <div class="dkpi"><div class="l">Endeudamiento</div><div class="v">0,6<small style="color:var(--muted)">x</small></div></div>
+            <div class="dkpi"><div class="l">Rotación inv.</div><div class="v">6,2<small style="color:var(--muted)">x</small></div></div>
+            <div class="dkpi"><div class="l">ROE</div><div class="v">22<small style="color:var(--muted)">%</small></div></div>
           </div>
         </div>
       </div>
@@ -360,11 +466,18 @@
   </div>
 </section>
 
-<!-- TRUST -->
-<div class="trust">
+<!-- SOCIAL PROOF / LOGOS -->
+<div class="logos">
   <div class="wrap">
-    <span class="lbl">Trabajamos sobre sus sistemas contables:</span>
-    <b>Nubox</b><b>Defontana</b><b>QuickBooks</b><b>Xero</b><b>Bsale</b>
+    <p class="lead">Nos integramos con los sistemas contables y de gestión que su empresa ya usa</p>
+    <div class="logo-row">
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Nubox</span>
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Defontana</span>
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>QuickBooks</span>
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg>Xero</span>
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Bsale</span>
+      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg>Google Sheets</span>
+    </div>
   </div>
 </div>
 
@@ -512,7 +625,13 @@
         <a class="btn btn-ghost" href="#agendar">Solicitar propuesta</a>
       </div>
     </div>
-    <p class="price-note">Honorarios de referencia en pesos chilenos · facturación mensual · sin permanencia mínima.</p>
+    <div class="anchor">
+      <div class="ac"><span class="k">CFO de planta · full-time</span><span class="v strike">~$10.000.000 / mes</span></div>
+      <span class="arw" aria-hidden="true">→</span>
+      <div class="ac"><span class="k">Plan Crecimiento · Nortia</span><span class="v">$1.290.000 / mes</span></div>
+      <span class="save">Ahorra ~87% · más de $8,7M al mes</span>
+    </div>
+    <p class="price-note">Honorarios de referencia en pesos chilenos · facturación mensual · sin permanencia mínima. Comparación referencial con el costo cargado de un CFO de planta.</p>
   </div>
 </section>
 
@@ -525,10 +644,25 @@
       <h2>Lo que cambia al tener un CFO a su lado.</h2>
     </div>
     <div class="results-grid">
-      <div class="quote">
-        <div class="mk">“</div>
-        <p>Pasamos de no saber si llegábamos a fin de mes a proyectar la caja con tres meses de anticipación. Hoy tomamos decisiones con información, no con incertidumbre.</p>
-        <div class="by"><b>Perfil de cliente tipo</b> — empresa de comercio, 18 colaboradores</div>
+      <div class="case">
+        <div class="case-head">
+          <div class="avatar" aria-hidden="true">MR</div>
+          <div class="who">
+            <b>María Rivas</b>
+            <span>Gerenta General · Comercial Andes (perfil de cliente tipo)</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <p class="q">“Pasamos de no saber si llegábamos a fin de mes a proyectar la caja con tres meses de anticipación. Hoy decidimos con información, no con incertidumbre.”</p>
+          <div class="runway">
+            <div class="rt">Runway · antes vs. después (primeros 6 meses)</div>
+            <div class="runway-bars">
+              <div class="rb"><div class="bar before" style="height:34px"></div><div class="val">4 m</div><div class="lab">Antes</div></div>
+              <div class="arrow" aria-hidden="true">→</div>
+              <div class="rb"><div class="bar after" style="height:92px"></div><div class="val">11 m</div><div class="lab">Después</div></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="metrics">
         <div class="metric"><div class="m tnum" data-count="90" data-suffix=" días">90 días</div><small>de anticipación promedio en la proyección de caja</small></div>
@@ -573,6 +707,53 @@
     <p class="contact">Escríbanos: <b>contacto@nortiacfo.cl</b> &nbsp;·&nbsp; <b>+56 9 0000 0000</b></p>
   </div>
 </section>
+
+<!-- SCHEDULING MODAL -->
+<div class="modal" id="agendarModal" hidden role="dialog" aria-modal="true" aria-labelledby="amTitle">
+  <div class="modal-box">
+    <div id="amForm">
+      <div class="modal-head">
+        <div>
+          <h3 id="amTitle">Agende su diagnóstico</h3>
+          <p>30 minutos, sin costo. Déjenos sus datos y elija un horario.</p>
+        </div>
+        <button class="modal-close" type="button" data-close aria-label="Cerrar">✕</button>
+      </div>
+      <div class="modal-body">
+        <form id="amFormEl" novalidate>
+          <div class="field">
+            <label for="amName">Nombre</label>
+            <input id="amName" name="name" type="text" autocomplete="name" placeholder="Su nombre" required>
+          </div>
+          <div class="field">
+            <label for="amEmail">Email o empresa</label>
+            <input id="amEmail" name="email" type="text" placeholder="correo@empresa.cl" required>
+          </div>
+          <div class="slot-label">Elija un horario (ejemplo)</div>
+          <div class="slots" id="amSlots" role="group" aria-label="Horarios disponibles">
+            <button type="button" class="slot">Mar 09:00</button>
+            <button type="button" class="slot">Mar 12:00</button>
+            <button type="button" class="slot">Mié 10:00</button>
+            <button type="button" class="slot">Mié 16:00</button>
+            <button type="button" class="slot">Jue 11:00</button>
+            <button type="button" class="slot">Jue 15:00</button>
+          </div>
+          <button class="btn btn-primary" type="submit">Confirmar mi hora →</button>
+          <p class="modal-note">Simulación de agendamiento para esta demostración. No se envía información real.</p>
+        </form>
+      </div>
+    </div>
+    <div id="amOk" class="modal-ok" hidden>
+      <div class="modal-body">
+        <div class="ok-ico" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 13l4 4 10-11" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>¡Reserva registrada!</h3>
+        <p id="amOkMsg">Gracias. En una página real recibiría la confirmación por correo.</p>
+        <p class="modal-note">Para coordinar de verdad, escriba a <b>contacto@nortiacfo.cl</b></p>
+        <button class="btn btn-ghost" type="button" data-close style="width:100%;margin-top:18px">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -653,6 +834,33 @@
     }
     tabs.forEach(function(t){ t.addEventListener('click',function(){ show(t.getAttribute('data-tab')); }); });
     var first=demo.querySelector('.demo-panel:not([hidden])'); if(first) animate(first);
+  })();
+
+  // Modal de agendamiento: form rápido de 2 campos + horarios (simulado)
+  (function(){
+    var modal=document.getElementById('agendarModal'); if(!modal) return;
+    var formView=document.getElementById('amForm'), okView=document.getElementById('amOk');
+    var slots=[].slice.call(modal.querySelectorAll('.slot')), chosen=null, lastFocus=null;
+    function open(e){ if(e) e.preventDefault(); lastFocus=document.activeElement; formView.hidden=false; okView.hidden=true; modal.hidden=false;
+      try{ document.body.style.overflow='hidden'; }catch(_){}
+      setTimeout(function(){ var n=document.getElementById('amName'); if(n) n.focus(); },40); }
+    function close(){ modal.hidden=true; try{ document.body.style.overflow=''; }catch(_){}
+      if(lastFocus && lastFocus.focus) lastFocus.focus(); }
+    [].slice.call(document.querySelectorAll('a[href="#agendar"]')).forEach(function(a){ a.addEventListener('click',open); });
+    modal.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',close); });
+    modal.addEventListener('click',function(e){ if(e.target===modal) close(); });
+    document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !modal.hidden) close(); });
+    slots.forEach(function(s){ s.addEventListener('click',function(){ slots.forEach(function(x){ x.classList.remove('sel'); }); s.classList.add('sel'); chosen=s.textContent; }); });
+    document.getElementById('amFormEl').addEventListener('submit',function(e){
+      e.preventDefault();
+      var name=document.getElementById('amName').value.trim();
+      var email=document.getElementById('amEmail').value.trim();
+      if(!name){ document.getElementById('amName').focus(); return; }
+      if(!email){ document.getElementById('amEmail').focus(); return; }
+      var when=chosen||'el horario que coordinemos';
+      document.getElementById('amOkMsg').textContent='Gracias, '+name+'. Su diagnóstico quedó registrado para '+when+'. En una página real recibiría la confirmación por correo.';
+      formView.hidden=true; okView.hidden=false;
+    });
   })();
 </script>
 
