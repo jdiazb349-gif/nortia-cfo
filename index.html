@@ -13,38 +13,38 @@
   /* Layout: consultora financiera institucional — fondo claro, bandas marino,
      titulares serif, columna de contenido contenida y trust-forward. */
   :root{
-    --bg:#f6f8fb;
+    --bg:#f5f4f8;
     --surface:#ffffff;
-    --navy:#0e2a47;        /* marino profundo: bandas oscuras y titulares */
-    --navy-2:#0a2037;
-    --ink:#132a44;         /* texto principal */
-    --muted:#5b6b7d;       /* texto secundario */
-    --line:#e3e9f1;        /* líneas */
-    --line-2:#1d3c5c;      /* líneas sobre marino */
-    --accent:#1c5fa8;      /* azul corporativo */
-    --accent-soft:#eaf1fa; /* relleno azul tenue */
-    --gold:#9c7a33;        /* dorado sobrio (detalle premium) */
-    --good:#1f7a52;
-    --on-navy:#eef4fb;     /* texto sobre marino */
-    --muted-navy:#9db4cd;  /* secundario sobre marino */
-    --radius:10px;
+    --navy:#141126;        /* ink índigo profundo: bandas oscuras */
+    --navy-2:#0d0b1c;
+    --ink:#1a1730;         /* texto principal */
+    --muted:#6a6782;       /* texto secundario */
+    --line:#e7e5f1;        /* líneas */
+    --line-2:#2b2746;      /* líneas sobre ink */
+    --accent:#5b57f2;      /* índigo vibrante */
+    --accent-soft:#ecebfe; /* relleno índigo tenue */
+    --gold:#bf8f36;        /* ámbar premium (detalle) */
+    --good:#15a06e;
+    --on-navy:#efeefb;     /* texto sobre ink */
+    --muted-navy:#a9a5cb;  /* secundario sobre ink */
+    --radius:12px;
     --maxw:1140px;
     --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
     --sans:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#0a1b2e; --surface:#0f2946; --navy:#081626; --navy-2:#060f1c;
-      --ink:#e9f0f8; --muted:#9fb2c7; --line:#1e3a57; --line-2:#234566;
-      --accent:#4e92d6; --accent-soft:#12335a; --gold:#caa24a; --good:#4cae82;
-      --on-navy:#e9f0f8; --muted-navy:#9fb2c7; color-scheme:dark;
+      --bg:#0c0a16; --surface:#17142a; --navy:#0a0814; --navy-2:#07050f;
+      --ink:#ece9f8; --muted:#a6a2c4; --line:#262146; --line-2:#332d57;
+      --accent:#8b88ff; --accent-soft:#1f1b3d; --gold:#d6b159; --good:#3ecf97;
+      --on-navy:#ece9f8; --muted-navy:#a6a2c4; color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#0a1b2e; --surface:#0f2946; --navy:#081626; --navy-2:#060f1c;
-    --ink:#e9f0f8; --muted:#9fb2c7; --line:#1e3a57; --line-2:#234566;
-    --accent:#4e92d6; --accent-soft:#12335a; --gold:#caa24a; --good:#4cae82;
-    --on-navy:#e9f0f8; --muted-navy:#9fb2c7; color-scheme:dark;
+    --bg:#0c0a16; --surface:#17142a; --navy:#0a0814; --navy-2:#07050f;
+    --ink:#ece9f8; --muted:#a6a2c4; --line:#262146; --line-2:#332d57;
+    --accent:#8b88ff; --accent-soft:#1f1b3d; --gold:#d6b159; --good:#3ecf97;
+    --on-navy:#ece9f8; --muted-navy:#a6a2c4; color-scheme:dark;
   }
 
   *{box-sizing:border-box}
@@ -96,7 +96,7 @@
   .aurora span{position:absolute; display:block; border-radius:50%; mix-blend-mode:screen; will-change:transform}
   .aurora .b1{width:48vw; height:48vw; left:-6%; top:-16%; background:radial-gradient(circle, color-mix(in srgb,var(--accent) 90%, transparent), transparent 62%); animation:drift1 23s ease-in-out infinite}
   .aurora .b2{width:40vw; height:40vw; right:-4%; top:-26%; background:radial-gradient(circle, color-mix(in srgb,var(--gold) 78%, transparent), transparent 60%); animation:drift2 29s ease-in-out infinite}
-  .aurora .b3{width:46vw; height:46vw; left:34%; top:24%; background:radial-gradient(circle, color-mix(in srgb,#2f80d6 85%, transparent), transparent 60%); animation:drift3 26s ease-in-out infinite}
+  .aurora .b3{width:46vw; height:46vw; left:34%; top:24%; background:radial-gradient(circle, color-mix(in srgb,#2dd4bf 85%, transparent), transparent 60%); animation:drift3 26s ease-in-out infinite}
   @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(9%,11%) scale(1.16)}}
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-11%,9%) scale(1.12)}}
   @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(7%,-9%) scale(1.22)}}
@@ -344,8 +344,34 @@
   .modal-ok h3{font-size:1.35rem}
   .modal-ok p{color:var(--muted); margin-top:10px; font-size:.95rem}
 
+  /* ===== animaciones ===== */
+  section[id]{scroll-margin-top:84px}
+  header.nav{transition:box-shadow .3s ease}
+  header.nav.scrolled{box-shadow:0 10px 34px -20px rgba(0,0,0,.7)}
+  @media (prefers-reduced-motion: no-preference){
+    html{scroll-behavior:smooth}
+    .btn{transition:transform .2s ease, background .2s ease, box-shadow .25s ease, border-color .2s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 14px 28px -16px color-mix(in srgb,var(--accent) 70%, transparent)}
+    .logo-chip{transition:transform .2s ease, border-color .2s ease, color .2s ease}
+    .logo-chip:hover{transform:translateY(-2px)}
+    /* reveal al hacer scroll (sólo cuando hay JS + IntersectionObserver) */
+    .js .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.3,1)}
+    .js .reveal.in{opacity:1; transform:none}
+    /* entrada escalonada del hero */
+    .js .hero .eyebrow,.js .hero h1,.js .hero .lede,.js .hero .cta,.js .hero .assure,.js .hero .hero-stats{opacity:0; animation:heroIn .8s cubic-bezier(.2,.7,.3,1) forwards}
+    .js .hero .eyebrow{animation-delay:.05s}
+    .js .hero h1{animation-delay:.12s}
+    .js .hero .lede{animation-delay:.24s}
+    .js .hero .cta{animation-delay:.36s}
+    .js .hero .assure{animation-delay:.46s}
+    .js .hero .hero-stats{animation-delay:.54s}
+    @keyframes heroIn{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
+  }
+
   @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 </style>
+
+<script>if('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
 
 <header class="nav">
   <div class="wrap">
@@ -860,6 +886,25 @@
       var when=chosen||'el horario que coordinemos';
       document.getElementById('amOkMsg').textContent='Gracias, '+name+'. Su diagnóstico quedó registrado para '+when+'. En una página real recibiría la confirmación por correo.';
       formView.hidden=true; okView.hidden=false;
+    });
+  })();
+
+  // Reveal al hacer scroll + sombra del nav
+  (function(){
+    var nav=document.querySelector('header.nav');
+    if(nav){ var onScroll=function(){ nav.classList.toggle('scrolled', (window.scrollY||0)>10); }; onScroll(); addEventListener('scroll',onScroll,{passive:true}); }
+    if(!('IntersectionObserver' in window)) return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var sel='.sec-head, .vcard, .svc, .step, .plan, .logo-chip, .case, .metric, .anchor, .matrix, #faq details, .final .wrap > *';
+    var items=[].slice.call(document.querySelectorAll(sel)).filter(function(el){ return !el.closest('.hero'); });
+    items.forEach(function(el,i){ el.classList.add('reveal'); el.style.transitionDelay=((i%3)*80)+'ms'; });
+    var io=new IntersectionObserver(function(ents){
+      ents.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -7% 0px'});
+    items.forEach(function(el){ io.observe(el); });
+    // lo que ya está en pantalla al cargar se revela de inmediato
+    requestAnimationFrame(function(){
+      items.forEach(function(el){ if(el.getBoundingClientRect().top < innerHeight*0.94){ el.classList.add('in'); io.unobserve(el); } });
     });
   })();
 </script>
