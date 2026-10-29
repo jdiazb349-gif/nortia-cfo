@@ -3,49 +3,49 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<style>html,body{margin:0}*{box-sizing:border-box}img{max-width:100%}[hidden]{display:none!important}body{font-family:"Source Sans 3",system-ui,sans-serif}</style>
+<style>html,body{margin:0}*{box-sizing:border-box}img{max-width:100%}[hidden]{display:none!important}body{font-family:"Archivo",system-ui,sans-serif}</style>
 <title>Nortia CFO</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
 <style>
   /* Layout: consultora financiera institucional — fondo claro, bandas marino,
      titulares serif, columna de contenido contenida y trust-forward. */
   :root{
-    --bg:#f5f4f8;
+    --bg:#f3f4f8;
     --surface:#ffffff;
-    --navy:#141126;        /* ink índigo profundo: bandas oscuras */
-    --navy-2:#0d0b1c;
-    --ink:#1a1730;         /* texto principal */
-    --muted:#6a6782;       /* texto secundario */
-    --line:#e7e5f1;        /* líneas */
-    --line-2:#2b2746;      /* líneas sobre ink */
-    --accent:#5b57f2;      /* índigo vibrante */
-    --accent-soft:#ecebfe; /* relleno índigo tenue */
-    --gold:#c8962f;        /* ámbar con más presencia */
-    --good:#15a06e;
-    --on-navy:#efeefb;     /* texto sobre ink */
-    --muted-navy:#a9a5cb;  /* secundario sobre ink */
-    --radius:12px;
-    --maxw:1140px;
-    --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
-    --display:"Fraunces", "Source Serif 4", Georgia, serif;
-    --sans:"Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --navy:#1b2fd8;        /* azul eléctrico: bloques */
+    --navy-2:#1626b8;
+    --ink:#0e0f17;         /* casi negro */
+    --muted:#6b6e80;       /* gris */
+    --line:#e6e7ef;        /* líneas */
+    --line-2:#3a49e0;      /* líneas sobre azul */
+    --accent:#1b2fd8;      /* azul eléctrico */
+    --accent-soft:#ecedff; /* relleno azul tenue */
+    --gold:#1b2fd8;        /* (monocromo azul) */
+    --good:#0ea66d;
+    --on-navy:#ffffff;     /* texto sobre azul */
+    --muted-navy:#c4caff;  /* secundario sobre azul */
+    --radius:14px;
+    --maxw:1180px;
+    --serif:"Archivo", system-ui, -apple-system, sans-serif;
+    --display:"Archivo", system-ui, -apple-system, sans-serif;
+    --sans:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#0c0a16; --surface:#17142a; --navy:#0a0814; --navy-2:#07050f;
-      --ink:#ece9f8; --muted:#a6a2c4; --line:#262146; --line-2:#332d57;
-      --accent:#8b88ff; --accent-soft:#1f1b3d; --gold:#e3bd63; --good:#3ecf97;
-      --on-navy:#ece9f8; --muted-navy:#a6a2c4; color-scheme:dark;
+      --bg:#0b0c12; --surface:#15161f; --navy:#1b2fd8; --navy-2:#1626b8;
+      --ink:#f0f1f6; --muted:#a6a9ba; --line:#262836; --line-2:#3a49e0;
+      --accent:#5468ff; --accent-soft:#1a1f4a; --gold:#5468ff; --good:#3ecf97;
+      --on-navy:#ffffff; --muted-navy:#c4caff; color-scheme:dark;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#0c0a16; --surface:#17142a; --navy:#0a0814; --navy-2:#07050f;
-    --ink:#ece9f8; --muted:#a6a2c4; --line:#262146; --line-2:#332d57;
-    --accent:#8b88ff; --accent-soft:#1f1b3d; --gold:#e3bd63; --good:#3ecf97;
-    --on-navy:#ece9f8; --muted-navy:#a6a2c4; color-scheme:dark;
+    --bg:#0b0c12; --surface:#15161f; --navy:#1b2fd8; --navy-2:#1626b8;
+    --ink:#f0f1f6; --muted:#a6a9ba; --line:#262836; --line-2:#3a49e0;
+    --accent:#5468ff; --accent-soft:#1a1f4a; --gold:#5468ff; --good:#3ecf97;
+    --on-navy:#ffffff; --muted-navy:#c4caff; color-scheme:dark;
   }
 
   *{box-sizing:border-box}
@@ -54,9 +54,9 @@
     padding-left:max(22px, env(safe-area-inset-left,0px));
     padding-right:max(22px, env(safe-area-inset-right,0px));}
   section{padding-block:clamp(60px,8vw,110px)}
-  h1,h2,h3{font-family:var(--serif); line-height:1.12; margin:0; font-weight:600; text-wrap:balance; letter-spacing:-.01em}
-  h1,h2{font-family:var(--display); letter-spacing:-.02em}
-  h1{font-weight:700}
+  h1,h2,h3{font-family:var(--serif); line-height:1.07; margin:0; font-weight:700; text-wrap:balance; letter-spacing:-.02em}
+  h1,h2{font-family:var(--display); letter-spacing:-.035em; font-weight:800}
+  h1{font-weight:800}
   h2{font-size:clamp(1.9rem,4vw,2.75rem)}
   p{margin:0}
   a{color:inherit}
@@ -176,9 +176,9 @@
   .svc.big{grid-column:span 2; grid-row:span 2; background:var(--navy); color:var(--on-navy); border-color:var(--line-2); justify-content:space-between; position:relative; overflow:hidden}
   .svc.big h3{font-size:clamp(1.5rem,2.6vw,2rem); color:#fff; margin-top:14px}
   .svc.big p{color:var(--muted-navy); font-size:1.04rem}
-  .svc.big .idx{color:var(--gold)}
+  .svc.big .idx{color:#fff}
   .svc.wide{grid-column:span 2}
-  .feat-badge{display:inline-flex; align-self:flex-start; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); background:var(--gold); padding:5px 11px; border-radius:999px}
+  .feat-badge{display:inline-flex; align-self:flex-start; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#fff; background:var(--accent); padding:5px 11px; border-radius:999px}
   .big-foot{display:flex; gap:10px; margin-top:22px; flex-wrap:wrap}
   .big-foot .pill{font-size:.8rem; color:var(--on-navy); border:1px solid var(--line-2); border-radius:999px; padding:7px 13px}
   @media(max-width:880px){ .bento{grid-template-columns:repeat(2,1fr)} .svc.big{grid-row:auto} }
@@ -271,7 +271,7 @@
   /* hero impact stats */
   .hero-stats{margin-top:28px; display:flex; gap:26px; flex-wrap:wrap; align-items:center}
   .hero-stats .hs{display:flex; flex-direction:column}
-  .hero-stats .hs b{font-family:var(--serif); font-size:1.65rem; font-weight:700; color:#ecc871; line-height:1}
+  .hero-stats .hs b{font-family:var(--display); font-size:1.7rem; font-weight:800; color:#fff; line-height:1}
   .hero-stats .hs span{font-size:.76rem; color:var(--muted-navy); margin-top:6px; max-width:17ch}
   .hero-stats .sep{width:1px; align-self:stretch; min-height:40px; background:var(--line-2)}
   @media(max-width:560px){ .hero-stats .sep{display:none} .hero-stats{gap:16px 26px} }
@@ -398,18 +398,49 @@
   .chat-note{font-size:.67rem; color:var(--muted); text-align:center; padding:0 12px 10px; background:var(--surface); flex:0 0 auto}
   @media(max-width:480px){ .chat-panel{width:calc(100vw - 20px); height:calc(100vh - 86px)} }
 
+  /* ===== más movimiento ===== */
+  .scroll-prog{position:fixed; top:0; left:0; height:3px; width:0; z-index:45; background:linear-gradient(90deg,var(--accent),var(--gold)); box-shadow:0 0 8px color-mix(in srgb,var(--accent) 60%,transparent)}
+  .marquee{overflow:hidden; margin-top:22px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .marquee-track{display:flex; width:max-content; animation:marquee 30s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee .mq{display:flex; gap:12px; padding-right:12px; flex:0 0 auto}
+  @keyframes marquee{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion: no-preference){
+    .nav-cta,.btn-primary{position:relative; overflow:hidden}
+    .nav-cta::after,.btn-primary::after{content:""; position:absolute; top:0; left:-70%; width:45%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent); transform:skewX(-18deg); animation:shine 5s ease-in-out infinite; pointer-events:none}
+    @keyframes shine{0%,55%{left:-70%}78%,100%{left:140%}}
+  }
+
+  /* texto que se rellena al scroll (estilo ONFORM) */
+  .sec-head .fill-text{font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,2.7vw,2rem); line-height:1.38; letter-spacing:-.015em}
+  .fill-text .w{color:color-mix(in srgb,var(--muted) 52%, transparent); transition:color .25s ease}
+  .fill-text .w.on{color:var(--accent)}
+
+  /* intro de carga */
+  .intro{display:none}
+  @media (prefers-reduced-motion: no-preference){
+    .intro{position:fixed; inset:0; z-index:9999; display:grid; place-items:center; background:var(--accent); pointer-events:none; animation:introOut .9s cubic-bezier(.7,0,.3,1) 1.3s forwards}
+    .intro span{font-family:var(--display); font-weight:900; font-size:clamp(3rem,15vw,10rem); color:#fff; letter-spacing:-.045em; animation:introIn .85s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes introIn{from{opacity:0; transform:translateY(28px)}to{opacity:1; transform:none}}
+    @keyframes introOut{to{transform:translateY(-105%)}}
+  }
+
   @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 </style>
 
-<script>if('IntersectionObserver' in window) document.documentElement.classList.add('js');</script>
+<div class="intro" aria-hidden="true"><span>NORTIA</span></div>
+
+<script>if('IntersectionObserver' in window) document.documentElement.classList.add('js'); setTimeout(function(){var i=document.querySelector('.intro'); if(i) i.style.display='none';}, 2400);</script>
+
+<div class="scroll-prog" id="scrollProg" aria-hidden="true"></div>
 
 <header class="nav">
   <div class="wrap">
     <div class="brand">
       <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-        <rect x="1.4" y="1.4" width="33.2" height="33.2" rx="10" fill="none" stroke="color-mix(in srgb,var(--gold) 65%, transparent)" stroke-width="1.3"/>
+        <rect x="1.4" y="1.4" width="33.2" height="33.2" rx="10" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/>
         <path d="M11 26V11l14 15V11" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M21.4 13.6L25 9.4l3.6 4.2" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21.4 13.6L25 9.4l3.6 4.2" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
       Nortia <span class="sub">CFO</span>
     </div>
@@ -429,7 +460,7 @@
   <div class="aurora" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
   <div class="wrap">
     <div>
-      <span class="eyebrow" style="color:var(--gold)">Dirección financiera externa</span>
+      <span class="eyebrow" style="color:#fff">Dirección financiera externa</span>
       <h1>La solidez financiera de una gran empresa, al alcance de la suya.</h1>
       <p class="lede">Optimizamos su caja a 90 días, ordenamos sus números y le damos claridad para decidir — con un director de finanzas experimentado, sin el costo de una contratación de planta.</p>
       <div class="cta">
@@ -442,11 +473,11 @@
         <span><svg class="check" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg> Primera reunión sin costo</span>
       </div>
       <div class="hero-stats">
-        <div class="hs"><b class="tnum">90 días</b><span>de visibilidad de su caja</span></div>
+        <div class="hs"><b class="tnum" data-count="90" data-suffix=" días">90 días</b><span>de visibilidad de su caja</span></div>
         <div class="sep"></div>
-        <div class="hs"><b class="tnum">−40%</b><span>menos tiempo en planillas</span></div>
+        <div class="hs"><b class="tnum" data-count="40" data-prefix="−" data-suffix="%">−40%</b><span>menos tiempo en planillas</span></div>
         <div class="sep"></div>
-        <div class="hs"><b class="tnum">4 sem</b><span>del caos al control</span></div>
+        <div class="hs"><b class="tnum" data-count="4" data-suffix=" sem">4 sem</b><span>del caos al control</span></div>
       </div>
     </div>
 
@@ -548,13 +579,25 @@
 <div class="logos">
   <div class="wrap">
     <p class="lead">Nos integramos con los sistemas contables y de gestión que su empresa ya usa</p>
-    <div class="logo-row">
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Nubox</span>
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Defontana</span>
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>QuickBooks</span>
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg>Xero</span>
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Bsale</span>
-      <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg>Google Sheets</span>
+    <div class="marquee">
+      <div class="marquee-track">
+        <span class="mq">
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Nubox</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Defontana</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>QuickBooks</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg>Xero</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Bsale</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg>Google Sheets</span>
+        </span>
+        <span class="mq" aria-hidden="true">
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>Nubox</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Defontana</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/></svg>QuickBooks</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M12 4v16" stroke-linecap="round"/></svg>Xero</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/></svg>Bsale</span>
+          <span class="logo-chip"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg>Google Sheets</span>
+        </span>
+      </div>
     </div>
   </div>
 </div>
@@ -566,7 +609,7 @@
       <hr class="rule">
       <span class="eyebrow">Por qué importa</span>
       <h2>Decisiones de millones no deberían tomarse a ciegas.</h2>
-      <p class="lead">La mayoría de las empresas en crecimiento llega a un punto en que la contabilidad ya no basta: hacen falta proyecciones, criterio y una mirada estratégica de las finanzas. Un CFO de planta resuelve eso, pero su costo anual supera lo que una PyME puede asumir. Nosotros entregamos esa misma capacidad, de forma externa y a su medida.</p>
+      <p class="lead fill-text" data-fill>La mayoría de las empresas en crecimiento llega a un punto en que la contabilidad ya no basta: hacen falta proyecciones, criterio y una mirada estratégica de las finanzas. Un CFO de planta resuelve eso, pero su costo anual supera lo que una PyME puede asumir. Nosotros entregamos esa misma capacidad, de forma externa y a su medida.</p>
     </div>
     <div class="cols3">
       <div class="vcard">
@@ -640,7 +683,7 @@
   <div class="wrap split">
     <div>
       <hr class="rule">
-      <span class="eyebrow" style="color:var(--gold)">Nuestra diferencia</span>
+      <span class="eyebrow" style="color:#fff">Nuestra diferencia</span>
       <h2 style="margin-top:8px">Más que contabilidad: un socio estratégico.</h2>
       <p class="lead">Su contador registra y cumple con las obligaciones; es indispensable y seguimos trabajando a su lado. Nuestro rol es distinto: tomamos esa información y la proyectamos hacia el futuro para guiar las decisiones que hacen crecer su empresa. Apoyamos el análisis con herramientas que automatizan el trabajo manual, de modo que el tiempo se dedique al criterio, no a las planillas.</p>
       <a class="btn btn-light" href="#agendar" style="margin-top:28px">Conversemos su caso</a>
@@ -775,7 +818,7 @@
 <section id="agendar" class="final">
   <div class="aurora" aria-hidden="true" style="opacity:.22"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
   <div class="wrap" style="position:relative; z-index:1">
-    <hr class="rule" style="margin-inline:auto; background:var(--gold)">
+    <hr class="rule" style="margin-inline:auto; background:#fff">
     <h2>Conversemos sobre el futuro financiero de su empresa.</h2>
     <p>Una reunión de 30 minutos, sin costo ni compromiso. Saldrá con tres observaciones concretas sobre sus finanzas, las implemente con nosotros o por su cuenta.</p>
     <div class="cta">
@@ -856,7 +899,7 @@
   <div class="wrap">
     <div>
       <div class="brand" style="color:var(--on-navy)">
-        <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="33.2" height="33.2" rx="10" fill="none" stroke="color-mix(in srgb,var(--gold) 65%, transparent)" stroke-width="1.3"/><path d="M11 26V11l14 15V11" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.4 13.6L25 9.4l3.6 4.2" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="mark" viewBox="0 0 36 36" fill="none" aria-hidden="true"><rect x="1.4" y="1.4" width="33.2" height="33.2" rx="10" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.3"/><path d="M11 26V11l14 15V11" stroke="#fff" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.4 13.6L25 9.4l3.6 4.2" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         Nortia <span class="sub">CFO</span>
       </div>
       <p>Dirección financiera externa para PyMEs y empresas en crecimiento de Latinoamérica.</p>
@@ -1023,6 +1066,52 @@
     send.addEventListener('click', submit);
     input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submit(); } });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !panel.hidden) closeP(); });
+  })();
+
+  // Texto que se rellena de color al hacer scroll (estilo ONFORM)
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('[data-fill]'));
+    if(!els.length) return;
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    els.forEach(function(el){
+      var parts=el.textContent.split(/(\s+)/); el.textContent='';
+      var spans=[];
+      parts.forEach(function(p){
+        if(/^\s+$/.test(p)){ el.appendChild(document.createTextNode(p)); return; }
+        var s=document.createElement('span'); s.className='w'; s.textContent=p; el.appendChild(s); spans.push(s);
+      });
+      el._w=spans;
+    });
+    function upd(){
+      var vh=innerHeight;
+      els.forEach(function(el){
+        var r=el.getBoundingClientRect();
+        var p=(vh*0.78 - r.top)/(vh*0.52);
+        p=Math.max(0,Math.min(1,p));
+        var n=Math.round(p*el._w.length);
+        for(var i=0;i<el._w.length;i++){ var on=i<n; if(el._w[i]._on!==on){ el._w[i].classList.toggle('on',on); el._w[i]._on=on; } }
+      });
+    }
+    upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
+  })();
+
+  // Barra de progreso de scroll
+  (function(){
+    var bar=document.getElementById('scrollProg'); if(!bar) return;
+    function upd(){ var h=document.documentElement; var max=h.scrollHeight-h.clientHeight; var p=max>0?((h.scrollTop||document.body.scrollTop)/max)*100:0; bar.style.width=p+'%'; }
+    upd(); addEventListener('scroll',upd,{passive:true}); addEventListener('resize',upd);
+  })();
+
+  // Panel: rotación automática de pestañas (pausa al interactuar)
+  (function(){
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var demo=document.querySelector('.demo'); if(!demo) return;
+    var tabs=[].slice.call(demo.querySelectorAll('.dt')); if(tabs.length<2) return;
+    var i=0, paused=false, stopped=false;
+    demo.addEventListener('mouseenter',function(){ paused=true; });
+    demo.addEventListener('mouseleave',function(){ paused=false; });
+    tabs.forEach(function(t){ t.addEventListener('click',function(e){ if(e.isTrusted) stopped=true; }); });
+    setInterval(function(){ if(paused||stopped||document.hidden) return; i=(i+1)%tabs.length; tabs[i].click(); }, 3800);
   })();
 </script>
 
