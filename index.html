@@ -371,6 +371,33 @@
     @keyframes heroIn{from{opacity:0; transform:translateY(22px)}to{opacity:1; transform:none}}
   }
 
+  /* ===== asistente (chat) ===== */
+  .chat-fab{position:fixed; right:max(18px,env(safe-area-inset-right,0px)); bottom:calc(18px + env(safe-area-inset-bottom,0px)); z-index:55; display:flex; align-items:center; gap:9px; background:var(--accent); color:#fff; border:none; border-radius:999px; padding:13px 19px; font-family:var(--sans); font-weight:600; font-size:.95rem; cursor:pointer; box-shadow:0 16px 36px -12px color-mix(in srgb,var(--accent) 70%, transparent)}
+  .chat-fab:hover{filter:brightness(1.07)}
+  .chat-fab svg{flex:0 0 auto}
+  .chat-panel{position:fixed; right:max(18px,env(safe-area-inset-right,0px)); bottom:calc(18px + env(safe-area-inset-bottom,0px)); z-index:56; width:min(362px, calc(100vw - 32px)); height:min(540px, calc(100vh - 120px)); background:var(--surface); border:1px solid var(--line); border-radius:16px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 34px 74px -22px rgba(4,20,40,.6)}
+  .chat-panel[hidden]{display:none}
+  .chat-head{display:flex; align-items:center; gap:11px; padding:14px 16px; background:var(--navy); color:var(--on-navy); flex:0 0 auto}
+  .chat-head .av{width:36px; height:36px; border-radius:50%; background:color-mix(in srgb,var(--accent) 42%, transparent); display:grid; place-items:center; flex:0 0 auto; color:#fff}
+  .chat-head b{font-family:var(--serif); font-size:1.02rem; display:block}
+  .chat-head .st{font-size:.72rem; color:var(--muted-navy); display:flex; align-items:center; gap:6px}
+  .chat-head .st i{width:7px; height:7px; border-radius:50%; background:var(--good); display:inline-block}
+  .chat-head .x{margin-left:auto; background:transparent; border:none; color:var(--muted-navy); cursor:pointer; font-size:1.05rem}
+  .chat-head .x:hover{color:#fff}
+  .chat-body{flex:1; overflow-y:auto; padding:16px; display:flex; flex-direction:column; gap:10px; background:var(--bg)}
+  .msg{max-width:85%; padding:11px 13px; border-radius:13px; font-size:.92rem; line-height:1.5; white-space:pre-line}
+  .msg.bot{background:var(--surface); border:1px solid var(--line); align-self:flex-start; border-bottom-left-radius:4px}
+  .msg.me{background:var(--accent); color:#fff; align-self:flex-end; border-bottom-right-radius:4px}
+  .sugs{display:flex; flex-wrap:wrap; gap:7px}
+  .sug{border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line)); background:var(--accent-soft); color:var(--accent); border-radius:999px; padding:7px 12px; font-size:.8rem; font-weight:600; cursor:pointer; font-family:var(--sans)}
+  .sug:hover{filter:brightness(.97)}
+  .chat-foot{display:flex; gap:8px; padding:12px; border-top:1px solid var(--line); background:var(--surface); flex:0 0 auto}
+  .chat-foot input{flex:1; min-width:0; border:1px solid var(--line); border-radius:999px; padding:10px 14px; font-family:var(--sans); font-size:.92rem; background:var(--bg); color:var(--ink)}
+  .chat-foot input:focus{outline:none; border-color:var(--accent)}
+  .chat-foot button{background:var(--accent); color:#fff; border:none; border-radius:50%; width:40px; height:40px; cursor:pointer; flex:0 0 auto; display:grid; place-items:center}
+  .chat-note{font-size:.67rem; color:var(--muted); text-align:center; padding:0 12px 10px; background:var(--surface); flex:0 0 auto}
+  @media(max-width:480px){ .chat-panel{width:calc(100vw - 20px); height:calc(100vh - 86px)} }
+
   @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important} }
 </style>
 
@@ -806,6 +833,25 @@
   </div>
 </div>
 
+<!-- ASISTENTE (chat) -->
+<button class="chat-fab" id="chatFab" type="button" aria-label="Abrir asistente de ayuda">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 20.5l1.6-4.2A8.5 8.5 0 1 1 21 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  ¿Dudas?
+</button>
+<div class="chat-panel" id="chatPanel" hidden role="dialog" aria-label="Asistente Nortia">
+  <div class="chat-head">
+    <span class="av" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.5L3 20.5l1.6-4.2A8.5 8.5 0 1 1 21 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <div><b>Asistente Nortia</b><span class="st"><i aria-hidden="true"></i> En línea</span></div>
+    <button class="x" data-chat-close type="button" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
+  <div class="chat-foot">
+    <input id="chatInput" type="text" placeholder="Escriba su pregunta…" autocomplete="off" aria-label="Escriba su pregunta">
+    <button id="chatSend" type="button" aria-label="Enviar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 12l15-7.5-5.5 15.5-3-6.5-6.5-1.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+  <div class="chat-note">Asistente automático · respuestas orientativas (maqueta)</div>
+</div>
+
 <footer>
   <div class="wrap">
     <div>
@@ -931,6 +977,52 @@
     requestAnimationFrame(function(){
       items.forEach(function(el){ if(el.getBoundingClientRect().top < innerHeight*0.94){ el.classList.add('in'); io.unobserve(el); } });
     });
+  })();
+
+  // Asistente de respuestas (base de conocimiento local, sin IA externa)
+  (function(){
+    var fab=document.getElementById('chatFab'), panel=document.getElementById('chatPanel');
+    var body=document.getElementById('chatBody'), input=document.getElementById('chatInput'), send=document.getElementById('chatSend');
+    if(!fab||!panel||!body) return;
+    var started=false;
+    function norm(s){ return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''); }
+    var KB=[
+      {k:['servicio','servicios','que hacen','que ofrecen','ofrecen','que incluye','en que ayudan','que hace nortia'], a:'Ofrecemos un área de finanzas completa:\n• Proyección de flujo de caja a 13 semanas\n• Reportes de gestión mensuales\n• Presupuesto y modelación con escenarios\n• Tableros de indicadores (KPIs)\n• Apoyo en levantamiento de capital\n• Due diligence y auditoría\n¿Le interesa alguno en particular?', sug:['Precios','¿Cómo funciona?','Agendar reunión']},
+      {k:['precio','precios','cuanto','cuesta','vale','valor','plan','planes','tarifa','honorario','cobran','cobra','mensualidad'], a:'Tenemos 3 planes mensuales, sin permanencia:\n• Esencial — $690.000/mes\n• Crecimiento (recomendado) — $1.290.000/mes\n• Capital — a su medida\nComo referencia, un CFO de planta cuesta ~$10.000.000/mes: ahorra cerca del 87%.', sug:['Agendar reunión','Servicios']},
+      {k:['como funciona','como trabajan','como es el proceso','proceso','etapa','etapas','metodologia','empezar','empezamos','como partimos','cuanto demora','cuanto tarda','tiempo'], a:'Trabajamos en 4 etapas:\n1) Diagnóstico\n2) Estructuración\n3) Implementación\n4) Acompañamiento mensual\nEn unas 4 semanas pasa del caos al control.', sug:['Precios','Agendar reunión']},
+      {k:['contador','contabilidad','diferencia','diferencian','distinto','reemplaza','en que se diferencia'], a:'Su contador registra el pasado y cumple con el SII; es fundamental y seguimos a su lado. Nosotros miramos hacia adelante: proyectamos la caja, definimos precios y planificamos el crecimiento y el financiamiento.', sug:['Servicios','Agendar reunión']},
+      {k:['seguro','segura','seguridad','datos','confidencial','confidencialidad','informacion','privacidad','mis numeros'], a:'Su información está protegida: accesos de solo lectura cuando es posible, acuerdos de confidencialidad firmados y manejo de datos bajo estándares de seguridad. Nunca se comparte con terceros.', sug:['¿Cómo funciona?','Agendar reunión']},
+      {k:['tamano','mi empresa','pyme','pymes','startup','para quien','para que empresas','sirve','pequena','grande','emprendimiento'], a:'Trabajamos desde startups con primeras ventas hasta empresas de ~100 colaboradores. Si tiene dudas sobre su caso, agende una reunión y le decimos con honestidad si le aportamos valor.', sug:['Agendar reunión','Precios']},
+      {k:['contrato','permanencia','amarr','cancelar','pausar','me puedo salir','compromiso'], a:'No hay contrato de permanencia. La facturación es mensual y puede ampliar, reducir o pausar avisando con 30 días. Queremos que se quede por los resultados.', sug:['Precios','Agendar reunión']},
+      {k:['softland','sistema','sistemas','contable','integra','integran','integracion','nubox','defontana','xero','bsale','quickbooks','conectar','conexion'], a:'Nos integramos con sus sistemas contables (Nubox, Defontana, QuickBooks, Xero, Bsale) mediante API o exportación, siempre con accesos de solo lectura. No necesita cambiar de software.', sug:['Seguridad','Agendar reunión']},
+      {k:['que es un cfo','que es cfo','director financiero','cfo virtual','que es nortia','que es un director'], a:'Un CFO (director financiero) toma la información financiera y la usa para decidir: cuánta caja habrá, qué precios poner, cuándo invertir o financiarse. Nortia le da esa capacidad de forma externa, sin el costo de contratarlo de planta.', sug:['Servicios','Precios']},
+      {k:['agendar','reunion','cita','hablar','demo','diagnostico','quiero hablar','contactar','contacto','correo','email','telefono','whatsapp','llamar'], a:'¡Con gusto! Le abro el formulario para agendar su diagnóstico gratuito de 30 minutos. También puede escribirnos a contacto@nortiacfo.cl.', act:'agendar'},
+      {k:['hola','buenas','buenos dias','buenas tardes','hey','que tal','saludos'], a:'¡Hola! 👋 ¿En qué le puedo ayudar? Pregúnteme por servicios, precios o cómo trabajamos.', sug:['Servicios','Precios','¿Cómo funciona?']},
+      {k:['gracias','genial','perfecto','buenisimo','excelente'], a:'¡De nada! 😊 Si tiene otra duda, aquí estoy.', sug:['Agendar reunión']}
+    ];
+    function scrollB(){ body.scrollTop=body.scrollHeight; }
+    function bubble(text,who){ var d=document.createElement('div'); d.className='msg '+who; d.textContent=text; body.appendChild(d); scrollB(); }
+    function chips(list){ if(!list||!list.length) return; var w=document.createElement('div'); w.className='sugs'; list.forEach(function(t){ var b=document.createElement('button'); b.type='button'; b.className='sug'; b.textContent=t; b.addEventListener('click',function(){ handle(t); }); w.appendChild(b); }); body.appendChild(w); scrollB(); }
+    function botSay(text,sug){ bubble(text,'bot'); if(sug) chips(sug); }
+    function answer(q){
+      var n=norm(q), best=null, score=0;
+      KB.forEach(function(e){ var s=0; e.k.forEach(function(kw){ if(n.indexOf(norm(kw))>-1) s++; }); if(s>score){ score=s; best=e; } });
+      if(best && score>0){
+        botSay(best.a, best.sug);
+        if(best.act==='agendar'){ setTimeout(function(){ closeP(); var a=document.querySelector('a[href="#agendar"]'); if(a) a.click(); }, 550); }
+      } else {
+        botSay('Esa no la tengo exacta 🤔. Puedo contarle de servicios, precios, cómo trabajamos o seguridad — o agendemos una reunión gratis para resolverlo.', ['Servicios','Precios','Agendar reunión']);
+      }
+    }
+    function handle(q){ bubble(q,'me'); setTimeout(function(){ answer(q); }, 260); }
+    function submit(){ var v=input.value.trim(); if(!v) return; input.value=''; handle(v); }
+    function openP(){ panel.hidden=false; fab.style.display='none'; if(!started){ started=true; botSay('¡Hola! 👋 Soy el asistente de Nortia CFO. Puedo ayudarle con servicios, planes, cómo trabajamos y seguridad. ¿Qué le gustaría saber?', ['Servicios','Precios','¿Cómo funciona?','Seguridad','Agendar reunión']); } setTimeout(function(){ input.focus(); }, 60); }
+    function closeP(){ panel.hidden=true; fab.style.display=''; }
+    fab.addEventListener('click', openP);
+    panel.querySelectorAll('[data-chat-close]').forEach(function(b){ b.addEventListener('click', closeP); });
+    send.addEventListener('click', submit);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); submit(); } });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape' && !panel.hidden) closeP(); });
   })();
 </script>
 
